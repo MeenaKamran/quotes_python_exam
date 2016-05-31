@@ -1,0 +1,14 @@
+* {
+  font-family: monaco;
+}
+
+.navbar .divider-vertical {
+	height: 30px;
+	margin: 10px 5px;
+	border-right: 1px solid blue;
+	border-left: 1px solid #f2f2f2;
+}
+
+#quoter{
+	color: red;
+}

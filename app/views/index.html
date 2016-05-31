@@ -1,8 +1,126 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
-  </head>
-  <body>
-    The best place to start is the "WelcomeController.py" file in app/controllers.
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <link rel="stylesheet" href="static/css/styles.css" type="text/css">
+        <title>Welcome</title>
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+    </head>
+
+    <body>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="form-top">
+                	<div class="form-top-left">
+                    	<h3>Welcome!</h3>
+					</div>
+			</div>
+                <div class="container">
+                	
+                    <div class="row">
+                        
+                        <div class="col-sm-5">
+                            
+                            <div class="form-box">
+                            
+                                <!-- <div class="form-top">
+                                    <div class="form-top-left">
+                                        <h3>Register</h3>
+                                    </div>
+                                </div> -->
+                                <fieldset class="scheduler-border">
+                                    <legend class="scheduler-border">Register</legend>
+                                <div class="form-bottom">
+                                    <form role="form" action="/create" method="post" class="registration-form">
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-first-name">Name</label>
+                                            <input type="text" name="form-first-name" placeholder="First name..." class="form-first-name form-control" id="form-first-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-last-name">Alias</label>
+                                            <input type="text" name="form-last-name" placeholder="Alias..." class="form-last-name form-control" id="form-last-name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-email">Email</label>
+                                            <input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-password">Password</label>
+                                            <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                            <p>*Password should be at least 8 characters</p>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-conf-password">Confirm PW</label>
+                                            <input type="password" name="form-conf-password" placeholder="Password..." class="form-conf-password form-control" id="form-conf-password">
+                                        </div>
+                                        
+                                        <button type="submit" class="btn">Register</button>
+                                    </form>
+
+                                </div>
+                                </fieldset>
+                            
+                            </div>
+                            
+                            
+                        </div> <!-- end of class="col-sm-5" -->
+                        
+                        
+                        <div class="col-sm-1 middle-border"></div>
+                        <div class="col-sm-1"></div>
+
+
+                        <div class="col-sm-5">
+                            
+                            <div class="form-box">
+                            
+                                <div class="form-bottom">
+                                    
+                                    <form role="form" action="/login" method="post" class="login-form">
+                                        <fieldset >
+                                            <legend >Login</legend>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="form-email">Email</label>
+                                                <input type="text" name="form-email" placeholder="Email..." class="form-email form-control" id="form-email">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="form-password">Password</label>
+                                                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                            </div>
+                                            <button type="submit" class="btn">Login</button>
+                                        </fieldset>
+                                    </form>
+
+                                </div>
+                            
+                            </div>
+                        </div>
+                        	
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+
+    </body>
+
 </html>

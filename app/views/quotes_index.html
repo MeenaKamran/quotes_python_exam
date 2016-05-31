@@ -1,0 +1,106 @@
+<!Doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Quotes</title>
+	<!-- <link rel="stylesheet" href="FreeBSD_css.css"> -->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" type="text/css" href="/static/css/quotes_style_sheet.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+	<div class="container">
+
+		<div class="col-md-12" class="active">
+			<nav class="navbar navbar-light bg-faded">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item active">
+						<a class="nav-link.pull-*-right" href="/logout">Logout <span class="sr-only"></span></a>
+					</li>
+				</ul>
+			</nav> 
+			<h5>Welcome, {{session['name']}}</h5>
+		</div> <!-- end of class="col-md-12" -->
+	</div> <!-- end of class="container" -->
+
+	<div class="container">
+	<div class="row">
+
+			<div class="col-md-5" class="active">
+			
+				<h4>Quotable Quotes</h4>
+				<!-- for-loop to display all quotes with a button -->
+				<fieldset class="scheduler-border">
+					<legend class="scheduler-border"></legend>
+					{%for quote in quotes%}
+						<fieldset class="scheduler-border">
+							<p>{{quote['quoted_by']}}: {{quote['message']}}</p>
+							<div class="col-sm-offset-7">
+								<form action='/add_to_fav/{{quote['id']}}' method='POST'>
+				                	<input type="submit" value="Add to MyList">
+				              	</form>
+				            </div>
+			              Posted by: <a href="/users/{{quote['user_id']}}">{{quote['name']}}</a>
+			        	</fieldset>
+					{%endfor%}
+				</fieldset>
+			</div> <!-- end of class="col-md-5" -->
+
+			<div class="col-md-5" class="active">
+				<!-- for-loop to display all users fav quotes with a button -->
+				<fieldset class="scheduler-border">
+	  				<legend class="scheduler-border">Your favorites</legend>
+					{% for fav_quote in fav_quotes%}
+						<div class="row">
+							<fieldset class="scheduler-border">
+								<p>{{fav_quote['quoted_by']}}: {{fav_quote['message']}}</p>
+								<div class="col-sm-offset-7"> 
+									<form action='/remove_from_fav/{{fav_quote['id']}}' method='POST'>
+					                	<input type="submit" btn btn-secondary value="Remove from MyList">
+					              	</form>
+					            </div>
+				              	Posted by: <a href="/users/{{fav_quote['user_id']}}">{{fav_quote['posted_by']}}</a>
+			              </fieldset>
+		              	</div>
+					{%endfor%}
+				</fieldset>
+				<br>
+				<br>
+				<form action='/add_quote' method='post'>
+					<h5>Contribute a Quote</h5>
+					<div class="form-group row">	
+						<label class="col-sm-3 form-control-label">Quoted By</label>
+						<div class="col-sm-9">
+							<input id="quoter" class="form-control" name='quoter'>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="msg" class="col-sm-3 form-control-label">Message</label>
+						<div class="col-sm-9">
+							<textarea id="message" class="form-control" name='message'></textarea>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-sm-offset-10 ">
+							<input id="add_quote_btn" class="btn btn-primary" type='submit' value='Submit'>
+						</div>
+					</div>
+	
+				</form>
+
+			</div> <!-- end of class="col-md-5 col-md-offset-2" -->
+
+
+	</div>  <!-- end of class="row" -->
+	</div>
+	
+
+</body>
+</html>
